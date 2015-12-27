@@ -1,8 +1,14 @@
 var fs = require('fs'),
     gulp = require('gulp'),
 
-    // HTML/CSS/JS
+    // HTML
     jade = require('gulp-jade'),
+
+    // JS
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
+    sourcemaps = require('gulp-sourcemaps');
 
     // Dev server
     connect = require('gulp-connect'),
@@ -64,11 +70,23 @@ gulp.task('httpd', function() {
   });
 });
 
+gulp.task('javascripts', function() {
+  return gulp.src(srcs.js)
+    .pipe(sourcemaps.init())
+    .pipe(concat('application.js'))
+    .pipe(gulp.dest(dests.js))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('../'))
+    .pipe(gulp.dest(dests.js));
+});
+
 gulp.task('default', function(callback) {
   env = jadeLocals.environment = 'development';
 
   runSequence(
     ['templates'],
+    ['javascripts'],
     ['httpd'],
     callback
   )
