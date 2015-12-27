@@ -1,5 +1,6 @@
 var fs = require('fs'),
     gulp = require('gulp'),
+    del = require('del'),
 
     // HTML
     jade = require('gulp-jade'),
@@ -10,6 +11,9 @@ var fs = require('fs'),
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps');
 
+    // JS and CSS revisioning
+    rev = require('gulp-rev'),
+
     // Dev server
     connect = require('gulp-connect'),
     runSequence = require('run-sequence');
@@ -18,7 +22,6 @@ var env,
     port = 4000,
     src  = './src',
     dest = './dist',
-    tmp  = './tmp',
     srcs = {
       pub: src + '/public/**/*',
       img: src + '/assets/images/**/*',
@@ -84,10 +87,31 @@ gulp.task('javascripts', function() {
 gulp.task('default', function(callback) {
   env = jadeLocals.environment = 'development';
 
-  runSequence(
-    ['templates'],
-    ['javascripts'],
-    ['httpd'],
-    callback
+  runSequence([
+    'templates',
+    'javascripts',
+    'httpd'
+    ], callback
   )
+});
+
+gulp.task('revision', function() {
+  return gulp.src([
+      dests.assets + '**/*.js'
+    ])
+    .pipe(rev())
+    .pipe(gulp.dest(dests.assets))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest(dests.assets));
+});
+
+gulp.task('build', function(callback) {
+  env = jadeLocals.environment = 'production';
+
+  runSequence(
+    ['javascripts'],
+    ['revision'],
+    ['templates'],
+    callback
+  );
 });
