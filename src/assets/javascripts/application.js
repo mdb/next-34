@@ -7,16 +7,16 @@
 
   function times(stops) {
     return stops.map(function(stop) {
-      return stop.time + 'm';
-    }).join(', ');
+      return '<li>' + stop.time + 'm</li>';
+    }).join('');
   }
 
   function templateData(data) {
     return '<h1>' + data.inbound[0].stopName + '</h1>' +
       '<h2>East</h2>' +
-      '<p>' + times(data.inbound) + '</p>' +
+      '<ol>' + times(data.inbound) + '</ol>' +
       '<h2>West</h2>' +
-      '<p>' + times(data.outbound) + '</p>';
+      '<ol>' + times(data.outbound) + '</ol>';
   }
 
   getLocation(function(pos) {
