@@ -20,6 +20,8 @@
     "gulp-rename": "1.2.2",
     "gulp-sourcemaps": "1.6.0",
     "gulp-rev": "6.0.1",
+    "gulp-babel": "6.1.1",
+    "gulp-watch": "4.3.5",
     "del": "2.2.0"
   }
 }

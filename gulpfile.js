@@ -16,12 +16,15 @@ var fs = require('fs'),
 
     // Dev server
     connect = require('gulp-connect'),
+    watch = require('gulp-watch'),
     runSequence = require('run-sequence');
 
 var env,
+    originalDest;
     port = 4000,
     src  = './src',
     dest = './dist',
+    tmp  = './tmp',
     srcs = {
       pub: src + '/public/**/*',
       img: src + '/assets/images/**/*',
@@ -87,12 +90,17 @@ gulp.task('javascripts', function() {
 gulp.task('default', function(callback) {
   env = jadeLocals.environment = 'development';
 
-  runSequence([
-    'templates',
-    'javascripts',
-    'httpd'
-    ], callback
+  runSequence(
+    ['delete:tmp', 'dest:tmp'],
+    ['templates', 'javascripts'],
+    ['httpd', 'watch'],
+    callback
   )
+});
+
+gulp.task('watch', function() {
+  gulp.watch(srcs.jade, ['templates']);
+  gulp.watch(srcs.js,   ['javascripts']);
 });
 
 gulp.task('revision', function() {
@@ -114,4 +122,21 @@ gulp.task('build', function(callback) {
     ['templates'],
     callback
   );
+});
+
+gulp.task('dest:tmp', function(callback) {
+  for (var key in dests) {
+    dests[key] = dests[key].replace(dest, tmp);
+  }
+
+  originalDest = dest;
+  dest = tmp;
+
+  callback();
+});
+
+gulp.task('delete:tmp', function(callback) {
+  del([ tmp +'*' ]).then(function() {
+    callback();
+  });;
 });
