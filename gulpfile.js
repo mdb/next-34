@@ -17,7 +17,10 @@ var fs = require('fs'),
     // Dev server
     connect = require('gulp-connect'),
     watch = require('gulp-watch'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+
+    // deployment
+    ghPages = require('gulp-gh-pages');
 
 var env,
     originalDest;
@@ -140,5 +143,10 @@ gulp.task('dest:tmp', function(callback) {
 gulp.task('delete:tmp', function(callback) {
   del([ tmp +'*' ]).then(function() {
     callback();
-  });;
+  });
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });

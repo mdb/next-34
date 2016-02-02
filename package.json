@@ -10,18 +10,19 @@
     "build": "gulp build"
   },
   "devDependencies": {
+    "del": "2.2.0",
     "express": "4.13.3",
     "gulp": "3.9.0",
-    "gulp-connect": "2.3.1",
-    "run-sequence": "1.1.5",
-    "gulp-jade": "1.1.0",
-    "gulp-concat": "2.6.0",
-    "gulp-uglify": "1.5.1",
-    "gulp-rename": "1.2.2",
-    "gulp-sourcemaps": "1.6.0",
-    "gulp-rev": "6.0.1",
     "gulp-babel": "6.1.1",
+    "gulp-concat": "2.6.0",
+    "gulp-connect": "2.3.1",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-jade": "1.1.0",
+    "gulp-rename": "1.2.2",
+    "gulp-rev": "6.0.1",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-uglify": "1.5.1",
     "gulp-watch": "4.3.5",
-    "del": "2.2.0"
+    "run-sequence": "1.1.5"
   }
 }
