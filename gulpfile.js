@@ -95,7 +95,7 @@ gulp.task('default', function(callback) {
     ['templates', 'javascripts'],
     ['httpd', 'watch'],
     callback
-  )
+  );
 });
 
 gulp.task('watch', function() {
@@ -125,7 +125,9 @@ gulp.task('build', function(callback) {
 });
 
 gulp.task('dest:tmp', function(callback) {
-  for (var key in dests) {
+  var key;
+
+  for (key in dests) {
     dests[key] = dests[key].replace(dest, tmp);
   }
 
