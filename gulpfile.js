@@ -9,7 +9,7 @@ var fs = require('fs'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
 
     // JS and CSS revisioning
     rev = require('gulp-rev'),
@@ -23,7 +23,7 @@ var fs = require('fs'),
     ghPages = require('gulp-gh-pages');
 
 var env,
-    originalDest;
+    originalDest,
     port = 4000,
     src  = './src',
     dest = './dist',
