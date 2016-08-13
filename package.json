@@ -1,7 +1,7 @@
 {
-  "name": "react-example",
-  "version": "1.0.0",
-  "description": "Simple React example app",
+  "name": "next-34",
+  "version": "0.1.0",
+  "description": "When does the next Philadelphia route 34 trolley arrive and where is the closest stop?",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --content-base ./ --env.dev",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mzabriskie/react-example"
+    "url": "https://github.com/mdb/next-34"
   },
-  "author": "Matt Zabriskie",
+  "author": "Mike Ball",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mzabriskie/react-example/issues"
+    "url": "https://github.com/mdb/next-34/issues"
   },
-  "homepage": "https://github.com/mzabriskie/react-example",
+  "homepage": "https://github.com/mdb/next-34",
   "dependencies": {
     "axios": "0.13.1",
     "history": "^3.0.0",
