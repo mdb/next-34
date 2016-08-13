@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 export default class RepoFilter extends Component {
   render() {
     return (
-      <section className="border-bottom">
+      <section>
         <input
           type="text"
           placeholder="Filter repositories..."

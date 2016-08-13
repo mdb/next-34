@@ -18,16 +18,10 @@ export default class User extends Component {
     const {filter} = this.state
     return (
       <div className="container">
-        <div className="row">
-          <div className="col-sm-3">
-            <Profile username={username} />
-          </div>
-          <div className="col-sm-9">
-            <h3>Repositories</h3>
-            <RepoFilter onUpdate={this.handleFilterUpdate} />
-            <RepoList filter={filter} username={username} />
-          </div>
-        </div>
+        <Profile username={username} />
+        <h3>Repositories</h3>
+        <RepoFilter onUpdate={this.handleFilterUpdate} />
+        <RepoList filter={filter} username={username} />
       </div>
     );
   }

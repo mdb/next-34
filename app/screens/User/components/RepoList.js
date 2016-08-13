@@ -23,7 +23,7 @@ export default class RepoList extends Component {
     const {repos} = this.state
     const {filter} = this.props
     return (
-      <ul className="list-unstyled">
+      <ul>
         {renderRepos(repos, filter.toLowerCase())}
       </ul>
     );

@@ -25,16 +25,15 @@ export default class Profile extends Component {
     const {user, orgs} = this.state;
     return (
       <div>
-        <section className="user border-bottom">
+        <section className="user">
           <img
             src={user.avatar_url}
-            className="img-rounded img-responsive"
             alt="User Avatar"
           />
           <h2>{user.name}</h2>
           <h5>{user.login}</h5>
         </section>
-        <section className="stats border-bottom">
+        <section className="stats">
           <ProfileStat value={user.followers} label="followers" />
           <ProfileStat value={user.public_repos} label="repositories" />
           <ProfileStat value={user.following} label="following" />
