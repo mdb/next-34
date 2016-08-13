@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import RouteList from './components/RouteList';
 
-export default class App extends Component {
+export default class Schedule extends Component {
   constructor() {
     super()
   }

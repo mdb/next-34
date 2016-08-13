@@ -25,7 +25,7 @@ export default class RouteList extends Component {
   }
 
   getClass() {
-    return this.state.inbound.length ? 'loaded' : 'loading';
+    return this.state.inbound.length > 1 ? 'loaded' : 'loading';
   }
 
   render() {
