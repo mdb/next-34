@@ -1,23 +1,16 @@
 import React, {Component, PropTypes} from 'react';
-import Profile from './components/Profile'
+import RouteList from './components/RouteList';
 
-export default class User extends Component {
+export default class App extends Component {
   constructor() {
     super()
   }
 
   render() {
-    const {username} = this.props.params
     return (
       <div className="container">
-        <Profile username={username} />
+        <RouteList />
       </div>
     );
   }
-}
-
-User.propTypes = {
-  params: PropTypes.shape({
-    username: PropTypes.string,
-  }),
 }
