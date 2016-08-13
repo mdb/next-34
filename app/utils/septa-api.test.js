@@ -1,9 +1,9 @@
 import moxios from 'moxios';
 import {spy} from 'sinon';
-import {getRepos, getUserData} from './github-api';
-import {getMockRepos, getMockUser, getMockOrgs} from './github-api.stub';
+import {getSchedule} from './septa-api';
+import {getMockSchedule} from './septa-api.stub';
 
-describe('GitHub API', () => {
+describe('Septa API', () => {
 
   beforeEach(() => {
     moxios.install();
@@ -13,45 +13,25 @@ describe('GitHub API', () => {
     moxios.uninstall();
   });
 
-  describe('getRepos', () => {
-    it('should make a request to the proper url for the given user', done => {
-      const data = getMockRepos(6);
+  describe('getSchedule', () => {
+    it('should make a request to the proper url for the given route, lat, and long', done => {
+      const schedule = getMockSchedule();
       const successHandler = spy();
 
-      moxios.stubRequest(/^https:\/\/api\.github\.com\/users\/kentcdodds\/repos/, {
+      moxios.stubRequest('https://septascheduler.herokuapp.com/point?route=34&lat=39.947714&lng=-75.223356', {
         status: 200,
-        response: data,
+        response: schedule,
       });
-      getRepos('kentcdodds').then(successHandler);
+
+      getSchedule({
+        route: '34',
+        lat: '39.947714',
+        lng: '-75.223356'
+      }).then(successHandler);
 
       moxios.wait(() => {
         expect(successHandler).to.have.been.calledOnce;
-        expect(successHandler).to.have.been.calledWith(data);
-        done();
-      });
-    });
-  });
-
-  describe('getUserData', () => {
-    it('should make a request to the proper urls for the given user', done => {
-      const user = getMockUser();
-      const orgs = getMockOrgs();
-      const successHandler = spy();
-
-      moxios.stubRequest(/^https:\/\/api\.github\.com\/users\/kentcdodds$/, {
-        status: 200,
-        response: user,
-      });
-      moxios.stubRequest(/^https:\/\/api\.github\.com\/users\/kentcdodds\/orgs/, {
-        status: 200,
-        response: orgs,
-      });
-
-      getUserData('kentcdodds').then(successHandler);
-
-      moxios.wait(() => {
-        expect(successHandler).to.have.been.calledOnce;
-        expect(successHandler).to.have.been.calledWith({user, orgs});
+        expect(successHandler).to.have.been.calledWith(schedule);
         done();
       });
     });
