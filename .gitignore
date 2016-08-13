@@ -1,4 +1,4 @@
-node_modules
-tmp
-dist
-.publish
+node_modules/
+build/
+coverage/
+.nyc_output/

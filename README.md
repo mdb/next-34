@@ -1,33 +1,22 @@
-# next-34
+# react-example
 
-When/where can I catch the next SEPTA route 34 trolley?
+React example app that demonstrates using [React] with [webpack], and [babeljs], as well as project structure.
 
-A minimal HTML5/JS application that reports the closest route 34 trolley stop and the next 4 scheduled east/west stops.
+Requirements:
+- git
+- Node v6
+- npm v3
 
-[mdb.github.io/next-34 &raquo;](http://mdb.github.io/next-34/)
+To run the app locally:
 
-## Development
-
-`next-34` relies on Node.js & Gulp.
-
-### Working locally:
-
-```
-npm install
-gulp
-open http://localhost:4000
-```
-
-### Building for production:
-
-Compile source code to a `dist` directory of static assets:
-
-```
-gulp build
+```bash
+git clone https://github.com/mzabriskie/react-example.git
+cd react-example
+npm run setup
+npm run dev
+open http://localhost:8080
 ```
 
-Deploy to `gh-pages`
-
-```
-gulp deploy
-```
+[React]: http://facebook.github.io/react/
+[webpack]: http://webpack.github.io/
+[babeljs]: https://babeljs.io/

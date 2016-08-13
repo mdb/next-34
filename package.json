@@ -1,10 +1,8 @@
 {
-  "name": "next-34",
-  "version": "0.1.0",
-  "repository": "https://github.com/mdb/next-34",
-  "description": "When does the next Philadelphia route 34 trolley arrive and where is the closest stop?",
-  "author": "Mike Ball <mikedball@gmail.com>",
-  "license": "MIT",
+  "name": "react-example",
+  "version": "1.0.0",
+  "description": "Simple React example app",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --content-base ./ --env.dev",
     "build": "webpack --env.prod",
@@ -14,6 +12,26 @@
     "start": "http-server",
     "setup": "npm install && npm run validate",
     "validate": "npm-run-all lint test build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mzabriskie/react-example"
+  },
+  "author": "Matt Zabriskie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mzabriskie/react-example/issues"
+  },
+  "homepage": "https://github.com/mzabriskie/react-example",
+  "dependencies": {
+    "axios": "0.13.1",
+    "bootstrap": "^3.3.5",
+    "history": "^3.0.0",
+    "moment": "^2.10.6",
+    "react": "15.3.0",
+    "react-dom": "15.3.0",
+    "react-router": "2.6.1",
+    "react-tooltip": "3.1.5"
   },
   "devDependencies": {
     "babel-core": "6.13.2",
@@ -30,6 +48,7 @@
     "enzyme": "2.4.1",
     "eslint": "3.2.2",
     "eslint-config-kentcdodds": "^9.0.2",
+    "file-loader": "0.9.0",
     "http-server": "0.9.0",
     "jsdom": "9.4.1",
     "lodash": "4.14.2",
@@ -40,18 +59,12 @@
     "react-addons-test-utils": "15.3.0",
     "sinon": "1.17.5",
     "sinon-chai": "2.8.0",
+    "starwars-names": "1.6.0",
     "style-loader": "^0.13.0",
     "webpack": "2.1.0-beta.20",
     "webpack-config-utils": "2.0.0",
     "webpack-dev-server": "2.1.0-beta.0",
     "webpack-validator": "2.2.7"
-  },
-  "dependencies": {
-    "axios": "0.13.1",
-    "history": "^3.0.0",
-    "react": "15.3.0",
-    "react-dom": "15.3.0",
-    "react-router": "2.6.1"
   },
   "nyc": {
     "all": true,
