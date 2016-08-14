@@ -5,25 +5,29 @@ export default class StopList extends Component {
     const stops = this.props.stops;
 
     return (
-      <ul className="stops">
-        <h3>{stops[0].stopName}</h3>
-        {stops.map(function(stop, i) {
-          return (
-            <li key={'stop-' + i}>
-              <time>{stop.time}</time>
-            </li>
-          );
-        })}
-      </ul>
+      <div>
+        <h3>{this.props.direction}</h3>
+        <ol className="stops">
+          {stops.map(function(stop, i) {
+            return (
+              <li key={'stop-' + i}>
+                <time>{stop.time}m</time>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
     );
   }
 }
 
 StopList.propTypes = {
-  stops: PropTypes.array
+  stops: PropTypes.array,
+  direction: PropTypes.string
 };
 
 StopList.defaultProps = {
+  direction: '',
   stops: [{
     stopName: ''
   }]

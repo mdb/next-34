@@ -7,6 +7,7 @@ export default class RouteList extends Component {
     super()
 
     this.state = {
+      stopName: '',
       inbound: [{}],
       outbound: [{}]
     };
@@ -30,15 +31,17 @@ export default class RouteList extends Component {
 
   render() {
     return (
-      <ul className={'routes ' + this.getClass()}>
-        <Route direction="inbound" stops={this.state.inbound} />
-        <Route direction="outbound" stops={this.state.outbound} />
-      </ul>
+      <div className={'routes ' + this.getClass()}>
+        <h2>{this.state.stopName}</h2>
+        <Route direction="East to City Hall" stops={this.state.inbound} />
+        <Route direction="West to 69th/Baltimore" stops={this.state.outbound} />
+      </div>
     );
   }
 }
 
 RouteList.propTypes = {
+  stopName: PropTypes.string,
   inbound: PropTypes.array,
   outbound: PropTypes.array
 };
