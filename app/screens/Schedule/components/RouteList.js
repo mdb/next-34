@@ -14,11 +14,11 @@ export default class RouteList extends Component {
   }
 
   componentWillMount() {
-    this.getData();
+    this.getSchedule();
   }
 
-  getData() {
-    getSchedule({
+  getSchedule() {
+    this.props.getSchedule({
       lat: '39.947714',
       lng: '-75.223356',
       route: '34'
@@ -43,5 +43,8 @@ export default class RouteList extends Component {
 RouteList.propTypes = {
   stopName: PropTypes.string,
   inbound: PropTypes.array,
-  outbound: PropTypes.array
+  outbound: PropTypes.array,
+  getSchedule: PropTypes.func
 };
+
+RouteList.defaultProps = {getSchedule};

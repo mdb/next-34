@@ -5,7 +5,7 @@ export default class StopList extends Component {
     const stops = this.props.stops;
 
     return (
-      <div>
+      <div className="stop">
         <h3>{this.props.direction}</h3>
         <ol className="stops">
           {stops.map(function(stop, i) {

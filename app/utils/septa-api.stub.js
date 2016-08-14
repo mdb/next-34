@@ -2,6 +2,7 @@ export {getMockSchedule};
 
 function getMockSchedule() {
   return {
+    stopName: 'Baltimore Av & 50th St',
     inbound: [{
       day: "Sat",
       date: "08/13/16 10:13 am",
